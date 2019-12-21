@@ -86,3 +86,9 @@ where release_year between 1990 and 2000
 and budget > 100000000
 and (language = 'Spanish' or language = 'French');
 ```
+#### WHERE IN
+```sql
+SELECT name
+FROM kids
+WHERE age IN (2, 4, 6, 8, 10);
+```
