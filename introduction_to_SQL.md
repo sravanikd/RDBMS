@@ -54,3 +54,17 @@ FROM films
 WHERE release_year = 1994
 OR release_year = 2000;
 ```
+Note that you need to specify the column for every OR condition, so the following is invalid:
+
+SELECT title
+FROM films
+WHERE release_year = 1994 OR 2000;
+
+##### WHERE, AND & OR
+When combining AND and OR, be sure to enclose the individual clauses in parentheses, like so:
+```sql
+SELECT title
+FROM films
+WHERE (release_year = 1994 OR release_year = 1995)
+AND (certification = 'PG' OR certification = 'R');
+```
