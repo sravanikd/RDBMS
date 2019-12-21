@@ -221,3 +221,14 @@ Example: Get the number of decades the films table covers. Alias the result as n
 ```sql
 select (max(release_year)-min(release_year))/10.0 as number_of_decades from films;
 ```
+
+##### ORDER BY
+In SQL, the ORDER BY keyword is used to sort results in ascending or descending order according to the values of one or more columns.
+
+By default ORDER BY will sort in ascending order. If you want to sort the results in descending order, you can use the DESC keyword. For example,
+```sql
+SELECT title
+FROM films
+ORDER BY release_year DESC;
+```
+gives you the titles of films sorted by release year, from newest to oldest.
