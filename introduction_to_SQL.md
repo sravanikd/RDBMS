@@ -1,8 +1,8 @@
 ## SQL
 
-#### SQL: Language for interacting with data stored in relational database
+ SQL: Language for interacting with data stored in relational database
 
-#### Relational DB: Collection of tables. rows/records | columns/fields
+ Relational DB: Collection of tables. rows/records | columns/fields
 
 ```sql
 SELECT * FROM people limit 10;
