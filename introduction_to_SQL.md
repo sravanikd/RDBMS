@@ -171,3 +171,24 @@ Example: Get the amount grossed by the best performing film between 2000 and 201
 ```sql
 select max(gross) from films where release_year between 2000 and 2012;
 ```
+
+##### arithmetic
+In addition to using aggregate functions, you can perform basic arithmetic with symbols like +, -, *, and /.
+
+So, for example, this gives a result of 12:
+```sql
+SELECT (4 * 3);
+```
+However, the following gives a result of 1:
+```sql
+SELECT (4 / 3);
+```
+What's going on here?
+
+SQL assumes that if you divide an integer by an integer, you want to get an integer back. So be careful when dividing!
+
+If you want more precision when dividing, you can add decimal places to your numbers. For example,
+```sql
+SELECT (4.0 / 3.0) AS result;
+```
+gives you the result you would expect: 1.333
