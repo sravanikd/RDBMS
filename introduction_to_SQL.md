@@ -124,3 +124,11 @@ SELECT name
 FROM companies
 WHERE name LIKE 'Data%';
 ```
+
+The _ wildcard will match a single character. For example, the following query matches companies like 'DataCamp', 'DataComp', and so on:
+```sql
+SELECT name
+FROM companies
+WHERE name LIKE 'DataC_mp';
+```
+You can also use the NOT LIKE operator to find records that don't match the pattern you specify.
