@@ -242,3 +242,31 @@ Example: Get the title and gross earnings for movies which begin with the letter
 ```sql
 select title,gross from films where title like 'M%' order by title;
 ```
+
+##### ORDER BY + DESC
+To order results in descending order, you can put the keyword DESC after your ORDER BY. For example, to get all the names in the people table, in reverse alphabetical order:
+```sql
+SELECT name
+FROM people
+ORDER BY name DESC;
+```
+Example:Get the IMDB score and film ID for every film from the reviews table, sorted from highest to lowest score.
+
+```sql
+select imdb_score, film_id from reviews order by imdb_score desc;
+```
+
+##### GROUP BY
+In SQL, GROUP BY allows you to group a result by one or more columns, like so:
+```sql
+SELECT sex, count(*)
+FROM employees
+GROUP BY sex;
+This might give, for example:
+```
+sex	count
+male	15
+female	19
+
+Commonly, GROUP BY is used with aggregate functions like COUNT() or MAX(). Note that GROUP BY always goes after the FROM clause!
+
