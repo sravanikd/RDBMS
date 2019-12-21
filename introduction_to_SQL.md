@@ -9,8 +9,11 @@ SELECT * FROM people limit 10;
 ```
 ##### select distinct
 ```sql
-SELECT DISTINCT language
-FROM films;
+SELECT DISTINCT language FROM films;
+```
+##### Count
+```sql
+SELECT COUNT(DISTINCT birthdate) FROM reviews;
 ```
 
 
