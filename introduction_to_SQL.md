@@ -7,7 +7,7 @@
 ```sql
 SELECT * FROM people limit 10;
 ```
-- select distinct
+##### select distinct
 ```sql
 SELECT DISTINCT language
 FROM films;
