@@ -232,3 +232,13 @@ FROM films
 ORDER BY release_year DESC;
 ```
 gives you the titles of films sorted by release year, from newest to oldest.
+
+Example:Get the names of people, sorted by birth date.
+```sql
+select name from people order by birthdate;
+```
+
+Example: Get the title and gross earnings for movies which begin with the letter 'M' and order the results alphabetically.
+```sql
+select title,gross from films where title like 'M%' order by title;
+```
