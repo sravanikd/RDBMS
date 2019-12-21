@@ -78,3 +78,11 @@ WHERE release_year
 BETWEEN 1994 AND 2000;
 ```
 It's important to remember that BETWEEN is inclusive, meaning the beginning and end values are included in the results!
+
+example query including between, where, and, or:
+```sql
+select title, release_year from films
+where release_year between 1990 and 2000 
+and budget > 100000000
+and (language = 'Spanish' or language = 'French');
+```
