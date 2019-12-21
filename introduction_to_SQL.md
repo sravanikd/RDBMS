@@ -166,3 +166,8 @@ Example: Get the average amount grossed by all films whose titles start with the
 ```sql
 select avg(gross) from films where title like 'A%'
 ```
+
+Example: Get the amount grossed by the best performing film between 2000 and 2012, inclusive.
+```sql
+select max(gross) from films where release_year between 2000 and 2012;
+```
