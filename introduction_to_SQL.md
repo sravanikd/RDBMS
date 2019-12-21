@@ -270,3 +270,51 @@ female	19
 
 Commonly, GROUP BY is used with aggregate functions like COUNT() or MAX(). Note that GROUP BY always goes after the FROM clause!
 
+Example: Get the release year, country, and highest budget spent making a film for each year, for each country. Sort your results by release year and country
+```sql
+select release_year,country,max(budget) from films group by release_year,country order by release_year,country;
+```
+
+##### HAVING
+In SQL, aggregate functions can't be used in WHERE clauses. For example, the following query is invalid:
+
+SELECT release_year
+FROM films
+GROUP BY release_year
+WHERE COUNT(title) > 10;
+
+This means that if you want to filter based on the result of an aggregate function, you need another way! That's where the HAVING clause comes in. For example,
+```sql
+SELECT release_year
+FROM films
+GROUP BY release_year
+HAVING COUNT(title) > 10;
+```
+shows only those years in which more than 10 films were released.
+HAVING comes after GROUP BY statement.
+
+Example:Get the country, average budget, and average gross take of countries that have made more than 10 films. Order the result by country name, and limit the number of results displayed to 5. You should alias the averages as avg_budget and avg_gross respectively.
+
+```SQL
+-- select country, average budget, average gross
+select country,avg(budget) as avg_budget, avg(gross) as avg_gross
+-- from the films table
+from films
+-- group by country 
+group by country
+-- where the country has more than 10 titles
+having count(title)>10
+-- order by country
+order by country;
+-- limit to only show 5 results
+limit 5
+```
+
+##### JOIN intro
+```sql
+SELECT title, imdb_score
+FROM films
+JOIN reviews
+ON films.id = reviews.film_id
+WHERE title = 'To Kill a Mockingbird';
+```
