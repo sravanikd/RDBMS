@@ -132,3 +132,22 @@ FROM companies
 WHERE name LIKE 'DataC_mp';
 ```
 You can also use the NOT LIKE operator to find records that don't match the pattern you specify.
+
+
+##### Aggregate functions
+Often, you will want to perform some calculation on the data in a database. SQL provides a few functions, called aggregate functions, to help you out with this.
+
+For example,
+```sql
+SELECT AVG(budget)
+FROM films;
+gives you the average value from the budget column of the films table. Similarly, the MAX function returns the highest budget:
+
+SELECT MAX(budget)
+FROM films;
+The SUM function returns the result of adding up the numeric values in a column:
+
+SELECT SUM(budget)
+FROM films;
+You can probably guess what the MIN function does! Now it's your turn to try out some SQL functions.
+```
