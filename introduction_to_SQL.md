@@ -151,3 +151,13 @@ SELECT SUM(budget)
 FROM films;
 You can probably guess what the MIN function does! Now it's your turn to try out some SQL functions.
 ```
+
+##### Aggregate functions with WHERE
+Aggregate functions can be combined with the WHERE clause to gain further insights from your data.
+
+For example, to get the total budget of movies made in the year 2010 or later:
+```sql
+SELECT SUM(budget)
+FROM films
+WHERE release_year >= 2010;
+```
