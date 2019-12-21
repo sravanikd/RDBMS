@@ -111,3 +111,16 @@ SELECT name
 FROM people
 WHERE birthdate IS NOT NULL;
 ```
+
+
+##### LIKE and NOT LIKE
+As you've seen, the WHERE clause can be used to filter text data. However, so far you've only been able to filter by specifying the exact text you're interested in. In the real world, often you'll want to search for a pattern rather than a specific text string.
+
+In SQL, the LIKE operator can be used in a WHERE clause to search for a pattern in a column. To accomplish this, you use something called a wildcard as a placeholder for some other values. There are two wildcards you can use with LIKE:
+
+The % wildcard will match zero, one, or many characters in text. For example, the following query matches companies like 'Data', 'DataC' 'DataCamp', 'DataMind', and so on:
+```sql
+SELECT name
+FROM companies
+WHERE name LIKE 'Data%';
+```
