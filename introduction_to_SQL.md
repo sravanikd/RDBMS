@@ -161,3 +161,8 @@ SELECT SUM(budget)
 FROM films
 WHERE release_year >= 2010;
 ```
+
+Example: Get the average amount grossed by all films whose titles start with the letter 'A'.
+```sql
+select avg(gross) from films where title like 'A%'
+```
