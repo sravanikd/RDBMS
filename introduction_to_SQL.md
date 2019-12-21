@@ -172,7 +172,7 @@ Example: Get the amount grossed by the best performing film between 2000 and 201
 select max(gross) from films where release_year between 2000 and 2012;
 ```
 
-##### arithmetic
+##### Arithmetic
 In addition to using aggregate functions, you can perform basic arithmetic with symbols like +, -, *, and /.
 
 So, for example, this gives a result of 12:
@@ -192,3 +192,24 @@ If you want more precision when dividing, you can add decimal places to your num
 SELECT (4.0 / 3.0) AS result;
 ```
 gives you the result you would expect: 1.333
+
+#####  AS aliasing
+```sql
+SELECT MAX(budget)
+FROM films;
+```
+gives you a result with one column, named max. But what if you use two functions like this?
+```sql
+SELECT MAX(budget), MAX(duration)
+FROM films;
+```
+Well, then you'd have two columns named max, which isn't very useful!
+
+To avoid situations like this, SQL allows you to do something called aliasing. Aliasing simply means you assign a temporary name to something. To alias, you use the AS keyword, which you've already seen earlier in this course.
+
+For example, in the above example we could use aliases to make the result clearer:
+```sql
+SELECT MAX(budget) AS max_budget,
+       MAX(duration) AS max_duration
+FROM films;
+```
