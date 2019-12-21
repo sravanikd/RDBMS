@@ -68,3 +68,13 @@ FROM films
 WHERE (release_year = 1994 OR release_year = 1995)
 AND (certification = 'PG' OR certification = 'R');
 ```
+
+##### BETWEEN
+the BETWEEN keyword provides a useful shorthand for filtering values within a specified range. This query is equivalent to the one above:
+```sql
+SELECT title
+FROM films
+WHERE release_year
+BETWEEN 1994 AND 2000;
+```
+It's important to remember that BETWEEN is inclusive, meaning the beginning and end values are included in the results!
