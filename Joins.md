@@ -60,7 +60,7 @@ FROM populations AS p1
     ON p1.country_code = p2.country_code
         -- 5. and year (with calculation)
         AND p1.year = p2.year - 5;
-        ```
+```
 ##### Case when and then
 Often it's useful to look at a numerical field not as raw data, but instead as being in different categories or groups.
 
