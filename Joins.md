@@ -222,3 +222,69 @@ Use right table to determine which records to keep on the left table
 Semi Join: chooses records in the first table where a condition "IS" met in a second table
 Anti Join: chooses records in the first table where a condition "IS NOT" met in a second table
 
+Example: UNION/UNION ALL/INTERSECT/EXCEPT
+Identify the country codes that are included in either economies or currencies but not in populations.
+Use that result to determine the names of cities in the countries that match the specification in the previous instruction.
+```sql
+-- Select the city name
+select name
+  -- Alias the table where city name resides
+  from cities AS c1
+  -- Choose only records matching the result of multiple set theory clauses
+  WHERE country_code IN
+(
+    -- Select appropriate field from economies AS e
+    SELECT e.code
+    FROM economies AS e
+    -- Get all additional (unique) values of the field from currencies AS c2  
+    UNION
+    SELECT c2.code
+    FROM currencies AS c2
+    -- Exclude those appearing in populations AS p
+    EXCEPT
+    SELECT p.country_code
+    FROM populations AS p
+);
+```
+
+##### SUBQUERIES INSIDE SELECT AND WHERE CLAUSES
+- Inside WHERE:
+```sql
+-- 2. Select fields
+SELECT  name, country_code, urbanarea_pop
+  -- 3. From cities
+  from cities
+-- 4. Where city name in the field of capital cities
+where name IN
+  -- 1. Subquery
+  (select capital
+   from countries)
+ORDER BY urbanarea_pop DESC;
+```
+- Inside SELECT 
+```sql
+SELECT countries.name AS country,
+  (SELECT DISTINCT(count(name))
+   FROM cities
+   WHERE countries.code = cities.country_code) AS cities_num
+FROM countries
+ORDER BY cities_num DESC, country
+LIMIT 9;
+```
+
+- Inside FROM:
+```sql
+-- Select fields
+select local_name,subquery.lang_num
+  -- From countries
+  from countries,
+  	-- Subquery (alias as subquery)
+  	(select code,count(*) as lang_num
+  	 from languages
+  	 group by code) AS subquery
+  -- Where codes match
+    WHERE countries.code = subquery.code
+-- Order by descending number of languages
+ORDER BY lang_num DESC;
+```
+
