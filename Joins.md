@@ -8,7 +8,7 @@ FROM left_table
 INNER JOIN right_table
 ON left_table.id = right_table.id;
 ```
-'''sql
+```sql
 SELECT c1.name AS city, c2.name AS country
 FROM cities AS c1
 INNER JOIN countries AS c2
@@ -155,3 +155,70 @@ ORDER BY geosize_group;
 #####  OUTER JOIN
 reaching OUT to another table while keeping all records of the original table
 3 types: LEFT JOIN,RIGHT JOIN, FULL JOINS
+
+
+##### FULL JOIN
+Includes all records from both the tables
+
+##### SET THEORY
+Fields should be of same data type
+UNION: does include all records of one copy from all tables
+UNION ALL: includes all records including duplicates from all tables
+UNION & UNION ALL stack records on top of each other from one table to the next
+Example:
+```sql
+-- Select field
+select country_code
+  -- From cities
+  from cities
+	-- Set theory clause
+	union 
+-- Select field
+select code
+  -- From currencies
+  from currencies
+-- Order by country_code
+order by country_code;
+```
+selects country code from cities table and unions them with all the fields from currencies excluding duplicates of code(country code)
+
+INTERSECT: looks for the fields from 2 tables that have same "values" in rows.
+Example: which countries also have a city with the same name as their country name?
+```sql
+-- Select fields
+select name
+  -- From countries
+  from countries
+	-- Set theory clause
+	intersect
+-- Select fields
+select name
+  -- From cities
+  from cities;
+  ```
+ o/p: Singapore
+ 
+EXCEPT:
+only records that appear on the left table but do not appear on the right table are included
+
+Example: Get the names of cities in cities which are not noted as capital cities in countries as a single field result.
+```sql
+-- Select field
+SELECT name
+  -- From cities
+  FROM cities
+	-- Set theory clause
+	except
+-- Select field
+SELECT capital
+  -- From countries
+  FROM countries
+-- Order by result
+ORDER BY name;
+```
+
+SEMI JOIN, ANTI JOIN:
+Use right table to determine which records to keep on the left table
+Semi Join: chooses records in the first table where a condition "IS" met in a second table
+Anti Join: chooses records in the first table where a condition "IS NOT" met in a second table
+
