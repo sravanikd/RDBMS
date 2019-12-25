@@ -287,4 +287,3 @@ select local_name,subquery.lang_num
 -- Order by descending number of languages
 ORDER BY lang_num DESC;
 ```
-
