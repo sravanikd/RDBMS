@@ -47,4 +47,24 @@ FROM
   album ;
 ```
 
+##### Variables
+- Rather than changing the query to have new results each time, create a variable and change the values in it
+```SELECT * FROM artist
+WHERE name= @my_artist;
+```
+-DECLARE:
+```sql
+DECLARE @
+---Integer variable
+DECLARE @test_int INT
+---VARCHAR variable
+DECLARE @my_artist VARCHAR(100)
+```
 
+-SET:
+Integer variable:
+```sql
+DECLARE @test_int INT
+
+SET @test_int=5
+```
